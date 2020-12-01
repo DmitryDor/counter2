@@ -1,5 +1,6 @@
 import styles from "../../App.module.css";
-import React, {ChangeEvent, useState} from "react";
+import React, {ChangeEvent} from "react";
+import {Button} from "./Button";
 
 
 type PropsType = {
@@ -10,8 +11,8 @@ type PropsType = {
     changeMaxValue: (value: number) => void
     error: boolean
     disable: boolean
-
 }
+export  type SetValueType = () => void
 
 export const Count1 = (props: PropsType) => {
 
@@ -27,7 +28,7 @@ export const Count1 = (props: PropsType) => {
         props.changeMaxValue(+e.currentTarget.value)
     }
 
-    const setValue = () => {
+    const setValue: SetValueType = () => {
         props.setValue()
 
     }
@@ -48,7 +49,7 @@ export const Count1 = (props: PropsType) => {
                 />
             </div>
             <div className={styles.output}>
-                <button className={styles.button} onClick={setValue} disabled={props.error || props.disable}>set</button>
+                <Button title={'Set'} value={setValue} disable={props.error || props.disable}/>
             </div>
         </div>
     )
